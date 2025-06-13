@@ -1,0 +1,219 @@
+body {
+    /* Garante que o body ocupe a tela toda e remove margens */
+    margin: 0;
+    height: 100vh;
+    background-color: rgb(26, 26, 26);
+    /* Opcional: esconde scrollbars se clicar perto da borda */
+    overflow: hidden; 
+    cursor: url('./Sprites/spider-web.png');
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    background-image: url('./Sprites/openart-image_ejj2z27-_1749786300393_raw.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /*adicionar como segundo background o visor do spiderman com opacidade de 80%  e zIndex de 1*/
+}
+.click-effect {
+    position: absolute; /* Essencial para posicionar onde o mouse clicou */
+    width: 80px;        /* Tamanho inicial da imagem */
+    pointer-events: none; /* Impede que a própria imagem seja clicável */
+    
+    /* Centraliza a imagem no cursor, em vez de começar pelo canto superior esquerdo */
+    transform: translate(-50%, -50%); 
+    
+    /* Aplica a animação que definimos abaixo */
+    animation: shrinkAndFade 0.9s ease-out forwards;
+    z-index: 0;
+}
+
+@keyframes shrinkAndFade {
+    /* Estado inicial: visível e no tamanho normal */
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    /* Estado final: encolhida e invisível */
+    to {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+.scoreBlock {
+    z-index: 1;
+    border: solid 2px rgb(180, 180, 180);
+    color: rgb(177, 177, 177);
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    left: 20px;
+    border-radius: 12px;
+    font-size: 12px;
+    position: absolute;
+}
+.Points p {
+    margin-left: 8px;
+}
+.NavBar {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+}
+.bloco {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.GameName {
+        box-shadow: 0px 0px 50px 10px rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.438);
+        color: wheat;
+        font-size: 26px;
+}
+.beltBlock {
+    background-color: rgb(175, 1, 1);
+    height: 60%;
+    width: 60px;
+    display: flex;
+    right: 0;
+    position: absolute;
+    top: 20%;
+    border-radius: 25px 0px 0px 25px;
+    transition: all 300ms;
+    border: solid 2px black;
+    cursor: pointer;
+    opacity: 96%;
+    z-index: 2;
+}
+.beltBlock:hover {
+    background-color: rgb(51, 51, 51);
+    width: 300px;
+    opacity: 80%;
+}
+.BlockSimbol{
+    width: 270px;
+    height: 90px;
+    cursor: pointer;
+    margin-top: 90px;
+    position: absolute;
+    display: flex;
+}
+.BlockSimbol img {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+footer {
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+}
+.flask {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 250px;
+    margin-left: 250px;
+}
+.flaskBlock {
+position: absolute;
+}
+/*Animação funcionando (so chmada apos um tempo no js)*/
+.flaskAnimation {
+    animation: flaskAnimation 1s  linear;
+}
+@keyframes flaskAnimation {
+    0% {
+    }
+    50% {
+    height: 90px;
+    width: 90px;
+    }
+    100% {
+    opacity: 6%;
+    height: 118px;
+    width: 120px;
+    }
+}
+.DocOck {
+    z-index: 0;
+    cursor: pointer;
+    height: 250px;
+    width: 250px;
+    animation:docOckAnimation 4s  infinite;
+    z-index: 1;
+}
+.docOckBlock {
+    z-index: 1;
+    position: absolute;
+    margin: 100px;
+    margin-left: 400px;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+}
+.hitAnimation {
+    animation: hitAnimation 300ms ease-in-out;
+}
+.teleportAnimation {
+    animation: teleportAnimation 1s ease-in-out;
+}
+.break {
+    animation: breakItem 1s linear;
+}
+/* ao ser add ao flask trocar img para ele quebrando*/
+@keyframes breakItem {
+    0% {}
+    50%{}
+    100%{}
+}
+@keyframes hitAnimation{
+    0% {
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+    }
+    25% {
+    }
+    50% {
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        background-color: rgb(182, 2, 2);
+        opacity: 50%;
+        height: 300px;
+        width: 300px;
+    }
+    100% {
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+    }
+}
+@keyframes docOckAnimation {
+    0% {
+
+    }
+    50% {
+        margin-top: 6%;
+    }
+    100% {
+        top: 90px;
+    }
+}
