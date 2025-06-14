@@ -9,6 +9,7 @@ const flaskB = document.getElementById("flaskB")
 const points = document.querySelector('.Points')
 const img = document.createElement('img');
 let pontos = 0
+let click = true
 
     flask.forEach(flask => {
         flask.addEventListener('click', function () {
@@ -39,16 +40,21 @@ document.body.addEventListener('click', function() {
 })
 
 OckImg.addEventListener('click', function hit () {
+if (click) {
+    click = false;
     if(!docOck.classList.contains('hitAnimation')) {
         docOck.classList.add('hitAnimation')
-        setTimeout(() => {
+            setTimeout(() => {
             docOck.classList.remove('hitAnimation')
-        }, 300);
-    }
+            }, 300);
+}
     if (img.src = '../Sprites/CursorWeb.png') {
         points.textContent = "Pontos:" +" "+ pontos++
+            if (pontos > 50) {
+            OckImg.style.display = "none"
+        }
     }
-    if (pontos > 10) {
-        OckImg.style.display = "none"
-    }
-})
+        setTimeout(() => {
+            click = true;
+        }, 800);
+}})
