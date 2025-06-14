@@ -1,0 +1,84 @@
+body {
+    /* Garante que o body ocupe a tela toda e remove margens */
+    margin: 0;
+    height: 100vh;
+    background-color: rgb(26, 26, 26);
+    /* Opcional: esconde scrollbars se clicar perto da borda */
+    overflow: hidden; 
+    cursor: url('../Sprites/spider-web.png');
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    background-image: url('./Sprites/FundoMenu.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    /*adicionar como segundo background o visor do spiderman com opacidade de 80%  e zIndex de 1*/
+}
+.NavBar {
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    z-index: 1;
+}
+.GameName {
+        box-shadow: 0px 0px 50px 10px rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.438);
+        color: wheat;
+        font-size: 26px;
+        animation: TittleAnimation  2.5s infinite;
+        transition: all 1s;
+}
+@keyframes TittleAnimation {
+    0%{margin-top: -1%;}
+    50%{margin-top: 1%;}
+    100%{margin-top: -1%;}
+}
+.optionsMenuBlock {
+    display: flex;
+    width: 200px;
+    height: 100%;
+    justify-content: center;
+}
+.optionsBlock {
+    display: grid;
+    height: 100px;
+    margin-top: 15%;
+}
+.optionsBlock h2 {
+    margin-top: 90px;
+    opacity: 100%;
+    background-color: white;
+    text-align: center;
+    border: solid black 2px;
+    border-radius: 8px;
+    height: 50px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 80%;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 500ms ;
+}
+a:hover {
+    color: rgb(153, 0, 0);
+    font-size: 17px;
+}
+footer {
+    bottom: 0;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+}
