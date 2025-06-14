@@ -8,7 +8,7 @@ const flaskT = document.getElementById("flaskT")
 const flaskB = document.getElementById("flaskB")
 const points = document.querySelector('.Points')
 const img = document.createElement('img');
-let pontos = 0
+let pontos = 1
 let click = true
 
     flask.forEach(flask => {
