@@ -19,10 +19,13 @@ const lifeBarBoss = document.getElementById("lifeBar");
 const img = document.createElement('img'); // Para o efeito de clique do cursor
 const tutorialBlock = document.querySelector('.tutorialBlock')
 const belt = document.getElementById("beltB")
+const danoTela = document.querySelector('.danoTela')
 const gameName = document.querySelector('.GameName')
+let coins = 0
 let pontos = 0;
 let click = true;
 let lifeOck = 30;
+let block = false
 const body = document.querySelector('body')
 player.scr = "../Sprites/SpiderManStop.png"
 belt.addEventListener("mouseover", function () {
@@ -36,6 +39,7 @@ belt.addEventListener("mouseout", function () {
 document.addEventListener('keydown', (event) => {
     // Executa a lógica apenas se a tecla for Espaço ou Seta para Cima
     if (event.key === ' ' ) {   
+
         player.src = "../Sprites/BlockSpiderMan.png";
         LeftFlip.style.display = "none"
         RightFlip.style.display = "none"
@@ -69,6 +73,15 @@ function startGame () {
     hideGameElements();
 
     setTimeout(() => {
+
+        //loop pote
+        setTimeout(() => {
+            flask.classList.remove("flaskAnimation")
+                    }, 1000);
+        setTimeout(() => {
+            flask.classList.add("flaskAnimation")
+        }, 1000);
+
         // Mostrar os elementos após um tempo
         console.log("Jogo Iniciado!");
         tutorialBlock.style.display = "none"
@@ -102,12 +115,13 @@ const blackScreenImg = document.getElementById("blackScreenImg")
     } else if (lifeOck < 15 && lifeOck >= 10) {
         lifeBarBoss.style.width = "40%";
     } else if (lifeOck < 10 && lifeOck > 5) {
+        OckImg.src = "../Sprites/DocOckDamage100.png"
         lifeBarBoss.style.width = "10%";
     } else if (lifeOck < 5 && lifeOck > 0) { 
         lifeBarBoss.style.width = "5%";
     } else {
         lifeBarBoss.style.display = "none";
-        docOck.style.margin = "600px"
+        docOck.remove()
         blackScreen.style.display = "flex"
         tutorialBlock.style.display = "none"
         lifeSpider3.style.display = "none";
@@ -123,11 +137,31 @@ const blackScreenImg = document.getElementById("blackScreenImg")
         blackScreenImg.classList.add("blackScreenAnimation")
         gameName.textContent = "Victory"
         coin.style.display = "none"
-        //docock machicado aqui em baixo
+
         setTimeout (() => {
             blackScreenImg.classList.remove("blackScreenAnimation")
             blackScreen.style.display = "none"
+            player.src = StaticSPider
+            player.style.display = "block"
         }, 1000)
+
+        //Victory
+            setTimeout(() => {
+                docOck.remove()
+                body.style.transition = "all 0s"
+            body.style.backgroundImage = "url('../Sprites/PointsBackGround.jpeg')"
+            player.style.display = "none"
+            tutorialBlock.style.display = "flex"
+            let tittle = document.getElementById("tittleTutorial")
+            tittle.textContent = "Treinamento encerrado:"
+            let txtTutorial = document.getElementById("textTutorial")
+            let tutorial = document.querySelector(".Tutorial")
+            txtTutorial.textContent = "Pontos:" +" " + pontos
+            let downTxtTutorial = document.getElementById("downTxtTutorial")
+            downTxtTutorial.textContent = "Coins:" + " " + coins
+            let tutoImg = document.getElementById("TutoImg")
+            tutoImg.style.display = "none"
+            }, 5000);
     }
 }
 // garante  que os elementos do jogo estejam escondidos ANTES de startGame ser chamado.
@@ -143,8 +177,9 @@ flask.forEach(f => { // Renomeado para 'f' para evitar conflito com 'flask'
         pontos++;
         points.textContent = "Points:" + " " + pontos;
 
-        if (pontos == 20 || pontos == 30 || pontos == 50) {
+        if (pontos == 20 || pontos == 30 || pontos == 40) {
             coin.classList.add("coinAnimation");
+            coins++
             coin.style.display = "block"; // Garante que a moeda esteja visível quando a animação começa
         } else if (pontos == 29 || pontos == 39) { // Remove a animação e esconde depois de um tempo
             coin.classList.remove("coinAnimation");
@@ -163,7 +198,7 @@ flask.forEach(f => { // Renomeado para 'f' para evitar conflito com 'flask'
 
 document.body.addEventListener('click', function(event) {
     if (docOck.style.display === "block") { // Verifica se o jogo está visível
-        img.style.zIndex = '2'
+        img.style.zIndex = '7'
         img.src = '../Sprites/CursorWeb.png';
         img.classList.add('click-effect');
         img.style.left = `${event.clientX}px`;
@@ -182,8 +217,12 @@ docOck.addEventListener('click', function hit () {
         
         if(!docOck.classList.contains('hitAnimation')) {
             docOck.classList.add('hitAnimation');
-
+            OckImg.src = "../Sprites/docFaceWeb.png"
+            docOck.style.filter = "saturate(70%)"
+            danoTela.style.display = "block"
             setTimeout(() => {
+                OckImg.src = "../Sprites/DocOckStop.png"
+                danoTela.style.display = "none"
                 docOck.classList.remove('hitAnimation');
             }, 300);
         }
@@ -227,6 +266,9 @@ RightFlip.addEventListener("mouseover", function () {
 
 function resetPlayerToStatic() {
     if (player.style.display === "block") {
+        if (block = true && event.key === ' ') {
+            player.scr = "../Sprites/BlockSpiderMan.png"
+        }
         // Remove movement animation classes
         player.classList.remove("SpiderMovesLeft");
         player.classList.remove("SpiderMovesRight");

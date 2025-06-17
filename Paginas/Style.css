@@ -15,6 +15,17 @@ body {
     background-size: cover;
     /*adicionar como segundo background o visor do spiderman com opacidade de 80%  e zIndex de 1*/
 }
+.danoTela {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    opacity: 10%;
+    background-color: rgb(224, 224, 224);
+    transition: all 2s;
+    display: none;
+}
+
 .click-effect {
     position: absolute; /* Essencial para posicionar onde o mouse clicou */
     width: 80px;        /* Tamanho inicial da imagem */
@@ -88,6 +99,7 @@ body {
     border-radius: 12px;
     font-size: 12px;
     position: absolute;
+    margin-top: 12px;
 }
 .Points p {
     margin-left: 8px;
@@ -134,7 +146,7 @@ body {
     border: solid 2px black;
     cursor: pointer;
     opacity: 96%;
-    z-index: 2;
+    z-index: 99;
     box-shadow: 0px 0px 80px 10px black;
 }
 .beltBlock:hover {
@@ -163,21 +175,24 @@ footer {
     width: 100%;
     height: 80px;
     position: absolute;
-    z-index: 4;
+    z-index: 100;
 }
 .flask {
-    height: 50px;
-    width: 50px;
+    opacity: 90%;
+    border-radius: 100%;
+    padding: 0;
+    box-shadow: 0px 0px 50px 3px black;
+    height: 22px;
+    width: 22px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1;
     position: absolute; /* Adicione esta linha para permitir top/left */
     top: 250px;         /* Mude de margin-top para top */
     left: 950px;        /* Mude de margin-left para left */
-    animation: flaskAnimation 2s infinite;
+
 }
 .flaskBlock {
-    display: none;
-    z-index: 4;
+    z-index: 5;
 position: absolute;
 }
 /*Animação funcionando (so chmada apos um tempo no js)*/
@@ -188,13 +203,17 @@ position: absolute;
     0% {
     }
     50% {
-    height: 90px;
-    width: 90px;
+    height: 70px;
+    width: 70px;
+    margin-left: -280px;
+    margin-top: 100px;
     }
     100% {
-    opacity: 6%;
-    height: 118px;
-    width: 120px;
+    margin-top: 98px;
+    margin-left: -278px;
+    opacity: 80%;
+    height: 80px;
+    width: 80px;
     }
 }
 .DocOck {
@@ -211,7 +230,7 @@ position: absolute;
 .spiderManImg {
     height: 290px;
     width: 290px;
-    z-index: 3;
+    z-index: 99;
     filter: saturate(80%);
 }
 .SpiderMovesLeft {
@@ -247,7 +266,7 @@ position: absolute;
     width: 100%;
 }
 .docOckBlock {
-    z-index: 2;
+    z-index: 6;
     position: absolute;
     margin-top: 180px;
     margin-left: 430px;
@@ -325,6 +344,7 @@ position: absolute;
     0%{margin-left: -430px;margin-top: 100px;}
     30%{margin-left: -430px; margin-top: 10px;}
     50%{margin-left: 600px; margin-top: 10px; height: 190px; width: 190px;}
+    50%{z-index: 7;}
     100%{margin-left: -430px; margin-top: 100px;}
 }
 
