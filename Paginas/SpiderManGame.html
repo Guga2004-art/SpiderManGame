@@ -8,29 +8,56 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="../Sprites/spider-web.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FPS SpiderMan</title>
+    <title>SpiderMan</title>
 </head>
 <body>
     <nav class="NavBar">
-        <div class="GameName">FPS SpiderMan</div>
+        <div class="GameName">Tutorial</div>
     </nav>
     <div class="bloco">
         <div class="scoreBlock">
-            <div class="Points"><p>Pontos: 0</p></div>
+            <div class="Points"><p>Points: 0</p></div>
         </div>
     </div>
-
+    <!--Tutorial menssage-->
+    <div class="tutorialBlock">
+        <div class="Tutorial">
+            <h1>How to play</h1>
+            <p>Mouse Left Click to cause damage <br> broke the flasks to get points <br> points give you coins <br><br> double click spaceBar block</p>
+            <p>Game start in 8 seconds</p>
+            <img src="../Sprites/TutorialSpiderMan.png" alt="">
+        </div>
+    </div>
+    <!--flip SpiderMan-->
+    <div class="LeftFlip" id="Lf"></div>
+    <div class="RightFlip" id="Rf"></div>
     <!--ItensArea-->
-
+    <div class="caixaBlock" style="display: none;">
+        <div class="caixa"><img src="../Sprites/Box.png">
+        </div>
+    </div>
+    <div class="coinBlock">
+        <img id="coin" src="../Sprites/Coin.png" alt="">
+    </div>
+    <!--SpiderManObj-->
+    <div class="SpiderManObj">
+        <div id="z4"></div>
+        <img src="../Sprites/SpiderManTurn.png" alt="" id="player" class="spiderManImg">
+    </div>
+    <!---->
     <div class="vilan1">
         <div class="flaskBlock">
             <img src="../Sprites/trhowable.png" alt="" id="flaskT"  class="flask">
             <img src="../Sprites/BrokenFlask.png" alt="" id="flaskB"  class="flask" style="display: none;">
         </div>
-        
+
+        <div class="lifeBlock">
+            <h2 id="bossLife">Boss life</h2>
+            <div class="life" id="lifeBar"></div>
+        </div>
+
         <div class="docOckBlock" id="Doc">
-            <img src="../Sprites/DocOckStop.png" alt="" id="DocImg" class="DocOck">
-            <img src="../Sprites/DocOakThrowing.png" alt="" class="DocOck"  style="display: none;">
+            <img src="../Sprites/DocOckStop.png" alt="" id="DocImgStop" class="DocOck" itemid="ockStop">
         </div>
     </div>
 
@@ -40,10 +67,14 @@
             <img src="../Sprites/item-removebg-preview.png" id="life3" class="coletavel" alt="">
         </div>
     <!---->
-    <div class="beltBlock">
+    <div class="beltBlock" id="beltB">
         <div class="belt">
 
         </div>
+    </div>
+
+    <div class="blackScreen">
+        <img id="blackScreenImg" src="../Sprites/Test,png" alt="">
     </div>
 
     <footer>
