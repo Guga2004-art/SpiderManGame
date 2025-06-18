@@ -19,8 +19,11 @@ const lifeBarBoss = document.getElementById("lifeBar");
 const img = document.createElement('img'); // Para o efeito de clique do cursor
 const tutorialBlock = document.querySelector('.tutorialBlock')
 const belt = document.getElementById("beltB")
+let chatMenssage = document.querySelector('.chatMenssage')
+let chatImg = document.querySelector('.chatImg')
 const danoTela = document.querySelector('.danoTela')
 const gameName = document.querySelector('.GameName')
+ let chatBlock = document.querySelector('.chatBlock')
 let coins = 0
 let pontos = 0;
 let click = true;
@@ -108,11 +111,30 @@ function startGame () {
 function updateLifeBar() {
 const blackScreen = document.querySelector('.blackScreen')
 const blackScreenImg = document.getElementById("blackScreenImg")
+ if (lifeOck == 23){
+        chatBlock.style.display = "flex"
+        chatMenssage.textContent = "Só consegue fazer isso ?"
+        setTimeout(() => {
+            chatBlock.style.display = "none"
+        }, 3000);
+    } if (lifeOck == 15) {
+        chatBlock.style.display = "flex"
+        chatMenssage.textContent = "Isso tá Facíl demais, não tá ?"
+        setTimeout(() => {
+            chatBlock.style.display = "none"
+        }, 3000);
+    } if (lifeOck <= 6 && lifeOck >= 2) {
+        chatBlock.style.display = "flex"
+        chatMenssage.textContent = "Ce tá bem Otto ?"
+        setTimeout(() => {
+            chatBlock.style.display = "none"
+        }, 3000);
+    }
     if (lifeOck >= 25) {
         lifeBarBoss.style.width = "100%";
     } else if (lifeOck < 25 && lifeOck >= 15) {
         lifeBarBoss.style.width = "70%";
-    } else if (lifeOck < 15 && lifeOck >= 10) {
+    }else if (lifeOck < 15 && lifeOck >= 10) {
         lifeBarBoss.style.width = "40%";
     } else if (lifeOck < 10 && lifeOck > 5) {
         OckImg.src = "../Sprites/DocOckDamage100.png"
@@ -143,11 +165,17 @@ const blackScreenImg = document.getElementById("blackScreenImg")
             blackScreen.style.display = "none"
             player.src = StaticSPider
             player.style.display = "block"
+            body.style.backgroundImage = "url('../Sprites/backgroundTrainingRoom.jpeg')"
+            gameName.textContent = "Training room"
+            chatBlock.style.display = "flex"
+            chatMenssage.textContent = "Training room ?? como assim ?"
+            player.src = "../Sprites/WhatSpiderMan.png"
         }, 1000)
 
         //Victory
             setTimeout(() => {
                 docOck.remove()
+                chatBlock.remove()
                 body.style.transition = "all 0s"
             body.style.backgroundImage = "url('../Sprites/PointsBackGround.jpeg')"
             player.style.display = "none"
@@ -177,16 +205,26 @@ flask.forEach(f => { // Renomeado para 'f' para evitar conflito com 'flask'
         pontos++;
         points.textContent = "Points:" + " " + pontos;
 
-        if (pontos == 20 || pontos == 30 || pontos == 40) {
+        if (pontos == 20 || pontos == 30 || pontos == 50) {
             coin.classList.add("coinAnimation");
             coins++
             coin.style.display = "block"; // Garante que a moeda esteja visível quando a animação começa
-        } else if (pontos == 29 || pontos == 39) { // Remove a animação e esconde depois de um tempo
+        } else if (pontos == 25 || pontos == 35) {
+
             coin.classList.remove("coinAnimation");
 
             setTimeout(() => {
                 coin.style.display = "none";
             }, 500); 
+        }else if(pontos > 49){
+            f.remove()
+            body.style.backgroundImage = "url('../Sprites/backgroundTrainingRoom.jpeg')"
+            gameName.textContent = "Training room"
+            chatBlock.style.display = "flex"
+            chatMenssage.textContent = "Training room ?? como assim ?"
+            setTimeout(() => {
+                chatBlock.style.display = "none"
+            }, 5000);
         }
 
         setTimeout(() => {
