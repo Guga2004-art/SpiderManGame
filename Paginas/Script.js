@@ -21,6 +21,7 @@ const tutorialBlock = document.querySelector('.tutorialBlock')
 const belt = document.getElementById("beltB")
 let chatMenssage = document.querySelector('.chatMenssage')
 let chatImg = document.querySelector('.chatImg')
+const btnPage = document.getElementById("btn")
 const danoTela = document.querySelector('.danoTela')
 const gameName = document.querySelector('.GameName')
  let chatBlock = document.querySelector('.chatBlock')
@@ -31,6 +32,7 @@ let lifeOck = 30;
 let block = false
 const body = document.querySelector('body')
 player.scr = "../Sprites/SpiderManStop.png"
+
 belt.addEventListener("mouseover", function () {
     belt.style.filter = "blur(0px)"
     body.style.filter = " blur(5px)"
@@ -174,16 +176,17 @@ const blackScreenImg = document.getElementById("blackScreenImg")
 
         //Victory
             setTimeout(() => {
+                            btnPage.style.display = "flex"
                 docOck.remove()
                 chatBlock.remove()
                 body.style.transition = "all 0s"
             body.style.backgroundImage = "url('../Sprites/PointsBackGround.jpeg')"
             player.style.display = "none"
             tutorialBlock.style.display = "flex"
-            let tittle = document.getElementById("tittleTutorial")
+            const tittle = document.getElementById("tittleTutorial")
             tittle.textContent = "Treinamento encerrado:"
-            let txtTutorial = document.getElementById("textTutorial")
-            let tutorial = document.querySelector(".Tutorial")
+            const txtTutorial = document.getElementById("textTutorial")
+            const tutorial = document.querySelector(".Tutorial")
             txtTutorial.textContent = "Pontos:" +" " + pontos
             let downTxtTutorial = document.getElementById("downTxtTutorial")
             downTxtTutorial.textContent = "Coins:" + " " + coins
@@ -216,8 +219,10 @@ flask.forEach(f => { // Renomeado para 'f' para evitar conflito com 'flask'
             setTimeout(() => {
                 coin.style.display = "none";
             }, 500); 
-        }else if(pontos > 49){
+        }else if(pontos > 50){
             f.remove()
+            OckImg.style.backgroundImage = "url('../Sprites/RealOck.jpeg')"
+            btnPage.style.display = "flex"
             body.style.backgroundImage = "url('../Sprites/backgroundTrainingRoom.jpeg')"
             gameName.textContent = "Training room"
             chatBlock.style.display = "flex"

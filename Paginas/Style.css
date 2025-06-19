@@ -15,6 +15,45 @@ body {
     background-size: cover;
     /*adicionar como segundo background o visor do spiderman com opacidade de 80%  e zIndex de 1*/
 }
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: all 500ms ;
+}
+#btn {
+    background-image: url('../Sprites/hqCover.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px 7px rgb(150, 5, 5);
+    border: solid 3px rgb(31, 0, 0);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: rgb(110, 1, 1);
+    height: 30%;
+    width: 10%;
+    background-color: rgb(2, 16, 61);
+    right: 3%;
+    top: 50%;
+    font-family: 'Michroma', sans-serif;
+    position: absolute;
+    z-index: 9999;
+    animation: btnAnimation 5s infinite;
+    transition: all 1s;
+}
+@keyframes btnAnimation {
+    0%{top: 50%; right: 3%;}
+    25%{right: 2.5%;}
+    50%{right: 3.5%;top: 49%; }
+    100%{right: 3%; top: 50%;}
+}
+#btn:hover{
+    opacity: 100%;
+}
 .danoTela {
     position: absolute;
     width: 100%;
@@ -250,6 +289,10 @@ position: absolute;
     animation: ockMovesSides  8s infinite;
     z-index: 1;
     filter: saturate(70%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
 }
 
 .spiderManImg {
